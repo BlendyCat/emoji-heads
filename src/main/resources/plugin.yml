@@ -1,0 +1,8 @@
+name: EmojiHeads
+main: com.naturaliscraft.emojihead.EmojiHeads
+version: 1.0
+author: BlendyCat
+commands:
+  emoji:
+    description: Displays emojis for users to wear
+    usage: /<command>
