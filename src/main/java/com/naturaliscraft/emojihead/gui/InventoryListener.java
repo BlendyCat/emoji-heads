@@ -35,11 +35,11 @@ public class InventoryListener implements Listener {
                     e.getCurrentItem().getType() == null ||
                     e.getCurrentItem().getType().equals(Material.AIR))
                     return;
-            if(!ChatColor.stripColor(e.getCurrentItem().getItemMeta().getLore()
+            ItemStack i = e.getCurrentItem();
+            if(!i.getItemMeta().hasLore() || !ChatColor.stripColor(i.getItemMeta().getLore()
                     .get(0)).equalsIgnoreCase("Emoji Head")) return;
             e.setCancelled(true);
             player.sendMessage(ChatColor.GOLD+"Emoji head removed!");
-            player.closeInventory();
             player.getInventory().setHelmet(new ItemStack(Material.AIR));
         }
     }

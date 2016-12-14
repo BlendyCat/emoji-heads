@@ -17,9 +17,8 @@ import java.util.UUID;
  */
 
 
-//Referenced from UltraCostmetics TexturedSkullFactory.java
 public class HeadCreator {
-    public ItemStack getHead(String texture, String title){
+    public ItemStack createHead(String texture, String title){
         ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
         SkullMeta meta = (SkullMeta) head.getItemMeta();
         GameProfile prof = new GameProfile(UUID.randomUUID(), null);
@@ -37,9 +36,6 @@ public class HeadCreator {
         }catch(IllegalAccessException e){
             e.printStackTrace();
         }
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7Emoji Head"));
-        meta.setLore(lore);
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', title));
         head.setItemMeta(meta);
         return head;
