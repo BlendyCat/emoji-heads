@@ -24,8 +24,16 @@ public class InventoryListener implements Listener {
             e.setCancelled(true);
             PlayerInventory pl = player.getInventory();
             if (pl.getHelmet() != null && pl.getHelmet().getType() != Material.AIR) {
-                player.sendMessage(ChatColor.RED+"You must have an empty helmet slot to wear an emoji!");
-                return;
+                if(!pl.getHelmet().getItemMeta().hasLore()) {
+                    player.sendMessage(ChatColor.RED+"You must have an empty helmet slot to wear an emoji!");
+                    return;
+                }
+                if(!ChatColor.stripColor(pl.getHelmet()
+                        .getItemMeta().getLore().get(0))
+                        .equalsIgnoreCase("Emoji Head")) {
+                    player.sendMessage(ChatColor.RED+"You must have an empty helmet slot to wear an emoji!");
+                    return;
+                }
             }
             pl.setHelmet(sel);
             player.closeInventory();
